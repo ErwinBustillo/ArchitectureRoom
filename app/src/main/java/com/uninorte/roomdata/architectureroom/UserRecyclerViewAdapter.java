@@ -36,6 +36,7 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
     public void onBindViewHolder(UserRecyclerViewAdapter.ViewHolder holder, int position) {
         holder.textoId.setText(data.get(position).getUid()+"");
         holder.textoNombre.setText(data.get(position).getFirstName()+"");
+        holder.textoApellido.setText(data.get(position).getLastName()+"");
     }
 
     @Override

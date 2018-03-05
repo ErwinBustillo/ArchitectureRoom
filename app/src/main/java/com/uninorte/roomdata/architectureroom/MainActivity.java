@@ -43,6 +43,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickAdd(View view) {
-
+        model.addUser(new User(data.size()+1,"Erwin"+(data.size()+1),"Bustillo"+(data.size()+1)));
     }
 }

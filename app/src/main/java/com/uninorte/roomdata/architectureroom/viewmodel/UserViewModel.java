@@ -3,16 +3,13 @@ package com.uninorte.roomdata.architectureroom.viewmodel;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
 import com.uninorte.roomdata.architectureroom.AppDatabase;
 import com.uninorte.roomdata.architectureroom.entity.User;
 
 import java.util.List;
-
-/**
- * Created by erwin on 3/4/2018.
- */
 
 public class UserViewModel extends AndroidViewModel {
     private AppDatabase appDatabase;
@@ -27,6 +24,20 @@ public class UserViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<User>> getUsers(){return data;}
+
+    public void addUser(User user){
+        new AddItemTask().execute(user); // la ejecuta
+    }
+
+    // tarea asyncrona que escribe en el dao e inserta el usuario
+    private class AddItemTask extends AsyncTask<User, Void, Void>{
+
+        @Override
+        protected Void doInBackground(User... item) {
+            appDatabase.userDao().insert(item[0]);
+            return null;
+        }
+    }
 
 
 }
