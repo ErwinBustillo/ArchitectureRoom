@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.uninorte.roomdata.architectureroom.entity.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,6 +39,12 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
         holder.textoNombre.setText(data.get(position).getFirstName()+"");
         holder.textoApellido.setText(data.get(position).getLastName()+"");
         holder.textoCity.setText(data.get(position).getAddress().getCity());
+        ArrayList<String> books =data.get(position).getBooks();
+        String libros = "";
+        for(String text:books){
+            libros = libros + ","+text;
+        }
+        holder.textoBooks.setText(libros);
     }
 
     @Override
@@ -52,6 +59,7 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
        TextView textoNombre;
        TextView textoApellido;
        TextView textoCity;
+       TextView textoBooks;
 
 
        public ViewHolder(View itemView){
@@ -60,6 +68,7 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
            textoNombre= itemView.findViewById(R.id.textoNombre);
            textoApellido = itemView.findViewById(R.id.textoApellido);
            textoCity = itemView.findViewById(R.id.textoCity);
+           textoBooks = itemView.findViewById(R.id.textoBooks);
        }
     }
 }

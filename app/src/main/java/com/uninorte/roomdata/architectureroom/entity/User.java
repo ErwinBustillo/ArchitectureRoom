@@ -5,6 +5,8 @@ import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
+import java.util.ArrayList;
+
 /**
  * Created by erwin on 3/4/2018.
  */
@@ -21,11 +23,14 @@ public class User {
     @Embedded
     private Address address;
 
+    private ArrayList<String> books;
+
     public User(int uid, String firstName, String lastName, Address address) {
         this.uid = uid;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
+        this.books = new ArrayList<>();
     }
 
     public int getUid() {
@@ -58,5 +63,13 @@ public class User {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public ArrayList<String> getBooks() {
+        return books;
+    }
+
+    public void setBooks(ArrayList<String> books) {
+        this.books = books;
     }
 }

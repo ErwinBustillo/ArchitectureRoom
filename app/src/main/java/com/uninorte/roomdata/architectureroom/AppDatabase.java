@@ -3,6 +3,7 @@ package com.uninorte.roomdata.architectureroom;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 
 import com.uninorte.roomdata.architectureroom.dao.UserDao;
@@ -13,6 +14,8 @@ import com.uninorte.roomdata.architectureroom.entity.User;
  */
 
 @Database(entities = {User.class}, version=1)
+@TypeConverters({Converter.class})
+
 public abstract class AppDatabase extends RoomDatabase{
 
     public abstract UserDao userDao();

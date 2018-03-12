@@ -92,6 +92,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickEdit(View view) {
         User user = data.get(0);
+        ArrayList<String> books = user.getBooks();
+        books.add("the book"+books.size());
+        user.setBooks(books);
+
         user.setFirstName(user.getFirstName()+"changed");
         model.addUser(user);
     }
