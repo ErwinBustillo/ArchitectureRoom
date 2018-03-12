@@ -26,7 +26,13 @@ public class UserViewModel extends AndroidViewModel {
     public LiveData<List<User>> getUsers(){return data;}
 
     public void addUser(User user){
+
         new AddItemTask().execute(user); // la ejecuta
+    }
+
+    public void deleteUser(User user){
+
+        new DeleteItemTask().execute(user); // la ejecuta
     }
 
     // tarea asyncrona que escribe en el dao e inserta el usuario
@@ -35,6 +41,16 @@ public class UserViewModel extends AndroidViewModel {
         @Override
         protected Void doInBackground(User... item) {
             appDatabase.userDao().insert(item[0]);
+            return null;
+        }
+    }
+
+    //eliminar
+    private class DeleteItemTask extends AsyncTask<User, Void, Void>{
+
+        @Override
+        protected Void doInBackground(User... item) {
+            appDatabase.userDao().delete(item[0]);
             return null;
         }
     }
