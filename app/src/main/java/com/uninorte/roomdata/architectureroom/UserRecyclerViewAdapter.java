@@ -37,6 +37,7 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
         holder.textoId.setText(data.get(position).getUid()+"");
         holder.textoNombre.setText(data.get(position).getFirstName()+"");
         holder.textoApellido.setText(data.get(position).getLastName()+"");
+        holder.textoCity.setText(data.get(position).getAddress().getCity());
     }
 
     @Override
@@ -50,12 +51,15 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
        TextView textoId;
        TextView textoNombre;
        TextView textoApellido;
+       TextView textoCity;
+
 
        public ViewHolder(View itemView){
            super(itemView);
            textoId = itemView.findViewById(R.id.textoId);
            textoNombre= itemView.findViewById(R.id.textoNombre);
            textoApellido = itemView.findViewById(R.id.textoApellido);
+           textoCity = itemView.findViewById(R.id.textoCity);
        }
     }
 }

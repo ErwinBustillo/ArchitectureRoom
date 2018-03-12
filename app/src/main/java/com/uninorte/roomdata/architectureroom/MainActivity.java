@@ -11,6 +11,7 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.TextView;
 
+import com.uninorte.roomdata.architectureroom.entity.Address;
 import com.uninorte.roomdata.architectureroom.entity.User;
 import com.uninorte.roomdata.architectureroom.viewmodel.UserViewModel;
 
@@ -86,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onClickAdd(View view) {
-        model.addUser(new User(data.size()+1,"Erwin"+(data.size()+1),"Bustillo"+(data.size()+1)));
+        model.addUser(new User(data.size(),"Erwin", "Bustillo", new Address("Barranquilla","Los Andes")));
     }
 
     public void onClickEdit(View view) {

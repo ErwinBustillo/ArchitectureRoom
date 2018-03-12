@@ -1,6 +1,7 @@
 package com.uninorte.roomdata.architectureroom.entity;
 
 import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
@@ -17,10 +18,14 @@ public class User {
     @ColumnInfo(name = "last_name")
     private String lastName;
 
-    public User(int uid, String firstName, String lastName) {
+    @Embedded
+    private Address address;
+
+    public User(int uid, String firstName, String lastName, Address address) {
         this.uid = uid;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.address = address;
     }
 
     public int getUid() {
@@ -45,5 +50,13 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
